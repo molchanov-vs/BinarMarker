@@ -4,13 +4,12 @@ from dash import dcc
 from dash.dependencies import Input, Output, State
 import os
 import base64
-import json
-import datetime
+from utils import *
 
 app = dash.Dash(__name__)
 
 image_folder = '/Users/molchanov/dev/eye_labelling/EyesDataset'  # Update with the path to your image folder
-image_list = sorted(os.listdir(image_folder))[:]
+image_list = sorted(os.listdir(image_folder))[:] # счётчик
 current_index = 0
 results = {}
 
@@ -63,21 +62,6 @@ def update_output(previous_clicks, next_clicks, opened_click, closed_click, save
         
     image_path = os.path.join(image_folder, image_list[current_index])
     return parse_contents(image_path)
-
-def save_json(data):
-    json_path = '/Users/molchanov/dev/eye_labelling/json'
-    with open(f'{json_path }/{get_current_date()}.json', "w") as json_file:
-    # Write the dictionary as JSON data
-        json.dump(data, json_file)
-
-def get_current_date():
-    # Get the current date
-    current_date = datetime.datetime.now().date()
-    
-    # Convert the date to a string
-    date_str = str(current_date)
-    
-    return date_str
 
 if __name__ == '__main__':
     app.run_server(debug=True)
