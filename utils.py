@@ -8,6 +8,14 @@ def save_json(data):
     # Write the dictionary as JSON data
         json.dump(data, json_file, indent=4)
 
+def read_json(file_path):
+    # Open the JSON file in read mode
+    with open(file_path, "r") as json_file:
+        # Load the JSON data from the file
+        data = json.load(json_file)
+    
+    return data
+
 def get_current_date():
     # Get the current date
     current_date = datetime.datetime.now()

@@ -1,4 +1,8 @@
 __pycache__/
 EyesDataset/
+dataset_B_Eye_Images/
 *.zip
 .DS_Store
+
+json/2023-06-28 09:07:15.004640.json
+test.ipynb
